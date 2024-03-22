@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <title>library</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            scroll-behavior: smooth;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            
+            background-color:aliceblue;
+        }
+        #main{
+            height: 100%;
+            width: 100%;
+          
+        }
+        header{
+            height: 10%;
+            width: 100%;
+            
+            padding: 1%;
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0 0 1px gray;
+        }
+        nav{
+        
+            width: 50%;
+           
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2%;
+           
+        }
+        a{
+            text-decoration: none;
+            color:rgb(59, 59, 59);
+            text-shadow: 0 10px 20px black;
+        }
+        h3:hover{
+            border-radius: 4px;
+            box-shadow: 0 0 50px gray;
+        }
+        h3:active{
+            scale: .8;
+        }
+        
+        
+        #home{
+            padding-top: 5%;
+        }
+        #mid{
+            
+           
+            height: 75%;
+            width: 100%;
+        }
+     
+        footer{
+            height: 10%;
+            background-color: chartreuse;
+        }
+        #logo{
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px black;
+        }
+
+        #books,#members,#records{
+            text-align: center;
+            padding: 10%;
+            
+        }
+        #books h1,#members h1,#records h1{
+            font-size: 600%;
+            text-shadow: 0 10px 20px black;
+          
+        }
+
+        #book{
+            display: flex;
+            justify-content: space-around;
+        }
+
+
+        form{
+            margin-top: 2%;
+            height: 98%;
+            width: 28%;
+            background-color:white;
+            border-radius: 10px;
+            border: 1px solid black;
+            text-align: end;
+            padding: 2%;
+            box-shadow: 0 10px 20px black;
+        }
+        #see{
+            
+            box-shadow: 0 10px 20px black;
+            font-size: 200%;
+            padding: 5%;
+            border-radius: 10px;
+            margin-top: 50%;
+            
+        }
+        #see:active{
+            scale: .8;
+        }
+        #see:hover{
+            cursor: pointer;
+        }
+        #dtl{
+           
+         display: flex;
+          margin-left: -2%;  
+        }
+
+
+
+        
+         summary h2{
+            text-shadow: 0 10px 20px black;
+            margin-top: 10%;
+            z-index: 100;
+
+        }
+        #icon{
+            font-size: 300%;
+            color: rgb(22, 18, 18);
+            text-shadow: 0 10px 20px black;
+            z-index: 100;
+        }
+        summary{
+            display: flex;
+            justify-content: center;
+            
+        }
+        summary:hover{
+            cursor: pointer;
+
+        }
+
+       
+      #loginform {
+        position: absolute;
+        left: 75%;
+        top: 80%;
+        font-family: sans-serif;
+        border: 1px solid black;
+        width: 20%;
+        height: 500%;
+        padding: 1%;
+        padding-top: 5%;
+        text-align: center;
+        border-radius: 20px;
+        background-color: transparent;
+        background:linear-gradient(rgba(0,0,0,.1)),(rgba(0,0,0,.1));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      
+      }
+      #loginform input{
+        padding-left: 10%;
+        padding-right: 10%;
+      }
+
+      #close{
+        color: red;
+        position: absolute;
+        right: 1%;
+        top: 70%;
+        z-index: -100;
+      }
+      
+      #submitbtn:hover{
+        cursor: pointer;
+
+      }
+      #fg{
+        border-bottom: 1px solid rgb(41, 110, 189) ;
+        margin-left: 38%;
+      }
+
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <header>
+            <img id="logo" src="https://w7.pngwing.com/pngs/432/302/png-transparent-learning-management-system-integrated-library-system-library-management-others-miscellaneous-text-silver-thumbnail.png" alt=""> 
+            <nav>
+                <a href="/lib"><h3>HOME</h3></a>
+                <a href="#members"><h3>MEMBERS</h3></a>
+                <a href="#books"><h3>BOOKS</h3></a>
+                <a href="#records"><h3>RECORDS</h3></a>
+            </nav>
+            <div id="dtl">
+                
+                    <details>
+                        <summary><i id="icon" class="ri-account-box-line"></i><h2>login</h2></summary>
+    
+                        <form id="loginform" action="/handlelogin/" method="post">
+                            {% csrf_token %}
+                            <h2>LOGIN</h2>
+                            <br>
+                            <h5>username: </h5><input type="text" name="username" id="" required> <br> <br>
+                            <h5>password: </h5><input type="password" name="password" id="" required>
+                            <br>
+                            <a id="fg" href="{% url 'password_reset' %}">forget password</a>
+                            <br><br>
+                            <input type="submit" value="login">
+                            <br><br>
+                             Didn't Have an account? <a href="/usersignup">signup</a>
+                             <br><br>
+                             <a  href="/userlogout"><h5 >LOGOUT</h5></a>
+
+                        </form>
+                        <h5 id="close">X close</h5>
+                            
+                    </details>
+
+                
+       
+                
+                 
+            </div>
+                
+                
+        </header>
+       
+
+
+         <section id="home">
+            <div id="mid">
+                <div class="visme_d" data-title="Untitled Project" data-url="90x37pmg-untitled-project" data-domain="forms" data-full-page="false" data-min-height="500px" data-form-id="27912"></div><script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script>
+            </div>
+    
+         </section>
+
+
+         
+        <section id="members">
+            <h1>MANAGE MEMBERS</h1>
+           <div id="book">
+            <form action="/addmember" method="get">
+                <h2>ADD MEMBER</h2>
+                <br>
+                m_id:<input type="number" name="m_id"required>
+                <br><br>
+                m_name:<input type="text" name="m_name"required>
+                <br><br>
+                mobile_no:<input type="tel" name="mobile_no"required>
+                <br><br>
+                semester:<input type="number" name="semester"required>
+                <br><br>
+                branch:<input type="text" name="branch"required>
+                <br><br>
+                <input id="submitbtn" type="submit" value="ADD MEMBER"required>
+            </form>
+             
+            <a  href="/seeallmembers"><button id="see" >SEE ALL MEMBERS</button></a>
+              </div>
+              
+              
+       </section>
+
+        <section id="books">
+             <h1>MANAGE BOOKS</h1>
+            <div id="book">
+                <form action="/addbook" method="get">
+                    <h2>ADD BOOK</h2>
+                    <br>
+                    b_id:<input type="number" name="b_id" required>
+                    <br><br>
+                    b_name:<input type="text" name="b_name"required>
+                    <br><br>
+                    subject:<input type="text" name="subject"required>
+                    <br><br>
+                    description:<input type="text" name="description"required>
+                    <br><br>
+                    semester:<input type="number" name="semester"required>
+                    <br><br>
+                    quantity:<input type="number" name="quantity"required>
+                    <br><br>
+                    price:<input type="number" name="price"required>
+                    <br><br>
+                    <input id="submitbtn" type="submit" value="ADD BOOK">
+                </form>
+                <a  href="/seeallbooks"><button  id="see" >SEE ALL BOOKS</button></a>
+                
+               </div>
+               
+               
+        </section>
+
+
+
+
+       <section id="records">
+        <h1>MANAGE RECORDS</h1>
+       <div id="book">
+        <form action="/addrecord" method="get">
+            <h2>ADD RECORD</h2>
+            <br>
+            r_id:<input type="number" name="r_id"required>
+            <br><br>
+            m_id:<input type="number" name="m_id"required>
+            <br><br>
+            m_name:<input type="text" name="m_name"required>
+            <br><br>
+            b_id:<input type="number" name="nb_id"required>
+            <br><br>
+            b_name:<input type="text" name="b_name"required>
+            <br><br>
+            issue_date:<input type="date" name="issue_date"required>
+            <br><br>
+            return_date:<input type="date" name="return_date"required>
+            <br><br>
+            
+            status:<select  name="status"  required>
+                <option>ISSUED</option>
+                <option style="display: none;">RETURNED</option>
+              </select>
+            <br><br>       
+            <input id="submitbtn" type="submit" value="ADD RECORD">
+        </form>
+      
+         
+        <a  href="/seeallrecords"><button id="see"> SEE ALL RECORDS</button></a>
+          </div>
+          
+          
+          
+   </section>
+
+   <button id="signup">javascript</button>
+        
+ </div>
+
+
+</body>
+</html>

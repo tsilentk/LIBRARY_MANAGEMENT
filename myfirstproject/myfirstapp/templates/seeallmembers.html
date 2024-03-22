@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all members</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        #updateform{
+         background-color: black;
+         position: absolute;
+         right: 27%;
+         text-align: end;
+         padding: 1%;
+         border-radius: 20px;
+         box-shadow: 0 5px 10px gray;
+ 
+        } 
+        
+     </style>
+</head>
+<body class="bg-dark">
+    <div class="bg-dark"  style="text-align: center;text-shadow: 0 10px 20px white;">
+        <H1 style="color: white;"> ALL MEMBERS</H1>
+      </div>
+
+
+    <table  class="table table-dark table-hover">
+        <tr>
+            <th>m_id</th>
+            <th>m_name</th>
+            <th>mobile_no</th>
+            <th>semester</th>
+            <th>branch</th>
+            <th>update member</th>
+            <th>delete</th>
+        </tr>
+        {% for i in members %}
+    </tr>
+     <tr>
+     
+     <td>{{i.m_id}}</td>
+     <td>{{i.m_name}}</td>
+     <td>{{i.mobile_no}}</td>
+     <td>{{i.semester}}</td>
+     <td>{{i.branch}}</td>
+     <td>
+        <details><summary>EDIT</summary>
+            <form id="updateform" action="/updatemember" method="get">
+                m_id:<input type="number" name="nm_id" value="{{i.m_id}}" required>
+                <br><br>
+                m_name:<input type="text" name="nm_name"value="{{i.m_name}}"required>
+                <br><br>
+                mobile_no:<input type="tel" name="nmobile_no"value="{{i.mobile_no}}"required>
+                <br><br>
+                semester:<input type="number" name="nsemester"value="{{i.semester}}"requiredrequired>
+                <br><br>
+                branch:<input type="text" name="nbranch"value="{{i.branch}}"required>
+                <br><br>
+                <input id="mybtn" type="submit" value="UPDATE MEMBER">
+
+             
+
+            </form></details>
+     </td>
+     <td>
+        <button>
+                <form action="/deletemember" method="GET">
+                    <input style="display: none;" type="number"  name="nm_id" value="{{i.m_id}}">
+                    <input style="background-color:red;text-shadow: 0 0 20px black,0 0 40px black,0 0 80px black;color: white;" type="submit" value="DELETE MEMBER">
+                </form>   
+        </button>
+     </td>
+     </tr>
+     {%endfor%} 
+    </table>
+
+    <script>
+        document.getElementById("mybtn").addEventListener("click", function() {
+          alert("ROW UPDATED SUCCESSFULLY");
+        });
+    </script>
+    
+
+    
+</body>
+</html>

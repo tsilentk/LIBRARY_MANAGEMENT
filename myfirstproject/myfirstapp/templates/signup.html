@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signupform</title>
+    <style>
+                body{
+            display: grid;
+            place-items: center;
+            background-image: url(https://images.unsplash.com/photo-1600431521340-491eca880813?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-position:top;
+            background-size: cover;
+            
+        }
+     
+       #signupform {
+        position: absolute;
+        top: 25%;
+        font-family: sans-serif;
+        border: 1px solid black;
+        width: 20%;
+        padding: 1%;
+        text-align: center;
+        border-radius: 20px;
+        background-color: transparent;
+        background:linear-gradient(rgba(0,0,0,.1)),(rgba(0,0,0,.1));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 10px 20px black;
+      }
+      #signupform input{
+        padding-left: 10%;
+        padding-right: 10%;
+      }
+      #signupform ul{
+        display: none;
+      }
+     
+    </style>
+
+
+</head>
+<body>
+   
+
+    <form id="signupform"  action="/handlesignup/" method="post">
+        {% csrf_token %}
+        <h2>SIGN UP</h2> 
+      
+        {{signupform}}
+        <br>
+        <input type="submit" value="sign up">
+        <br><br>
+        Already Signup?<a href="/userlogin">login now</a>
+    </form>
+    
+    
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all records</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <style>
+        #nav{
+            display: flex;
+            justify-content: space-between;
+            padding: 2%;
+        }
+        #btn{
+            padding-left: 26%;
+            padding-right: 26%;
+        }
+
+        #updateform{
+         background-color: black;
+         position: absolute;
+         right: 15%;
+         text-align: end;
+         padding: 1%;
+         border-radius: 20px;
+         box-shadow: 0 5px 10px gray;
+ 
+        } 
+
+    </style>
+ 
+</head>
+<body class="bg-dark">
+      
+    <div id="nav" style="text-align: center;text-shadow: 0 10px 20px white;">
+        <H1 style="color: white;"> ALL RECORDS</H1>
+        <div>
+        
+            <form class="d-flex" action="/seesearchrecords" method="get">
+                <input class="form-control me-2" type="search" name="nb_id" placeholder="search by b_id" aria-label="Search" required >
+                <input class="btn btn-outline-primary" type="submit" value="search">
+            </form>
+            <br><br><br>
+            <a href="/seeallrecords"> <h6>SEE ALL RECORDS</h6></a>
+        </div>
+      </div>
+
+    <table  class="table table-dark table-hover">
+        <tr>
+            <th>r_id</th>
+            <th>m_id</th>
+            <th>m_name</th>
+            <th>b_id</th>
+            <th>b_name</th>
+            <th>issue_date</th>
+            <th>return_date</th>
+            <th>status</th>
+            <th>update</th>
+            <th>delete</th>
+        </tr>
+        
+        {% for i in records %}
+    </tr>
+     <tr>
+     <td>{{i.r_id}}</td>
+     <td>{{i.m_id_id}}</td>
+     <td>{{i.m_name}}</td>
+     <td>{{i.b_id_id}}</td>
+     <td>{{i.b_name}}</td>
+     <td>{{i.issue_date}}</td>
+     <td>{{i.return_date}}</td>
+     <td>{{i.status}}</td>
+     <td>
+        <details><summary>EDIT</summary>
+            <form id="updateform" action="/updaterecord" method="get">
+                r_id: <input type="number" name="nr_id" value="{{i.r_id}}" required>
+                <br><br>
+                m_id: <input type="number" name="nm_id" value="{{i.m_id_id}}" required>
+                <br><br>
+                m_name: <input type="text" name="nm_name"value="{{i.m_name}}"required>
+                <br><br>
+                b_id: <input type="number" name="nb_id" value="{{i.b_id_id}}" required>
+                <br><br>
+                b_name: <input type="text" name="nb_name"value="{{i.b_name}}" required>
+                <br><br>
+                issue_date: <input type="date" name="nissue_date"  placeholder="{{i.issue_date}}">
+                <br><br>
+                return_date: <input type="date" name="nreturn_date" >
+                <br><br>
+                status:<select  name="nstatus" value="{{i.status}}" required>
+                    <option style="display: none;">ISSUED</option>
+                    <option>RETURNED</option>
+                  </select>
+                  <br><br>
+                <input id="mybtn" type="submit" value="UPDATE RECORD">
+            </form></details>
+     </td>
+     <td>
+        <button>
+                <form action="/deleterecord" method="GET">
+                    <input style="display: none;" type="number"  name="nr_id" value="{{i.r_id}}">
+                    <input style="background-color:red;text-shadow: 0 0 20px black,0 0 40px black,0 0 80px black;color: white;" type="submit" value="DELETE RECORD">
+                </form>   
+        </button>
+     </td>
+     </tr>
+     {%endfor%}
+    </table>
+   
+
+
+
+
+    <script>
+        document.getElementById("mybtn").addEventListener("click", function() {
+          alert("ROW UPDATED SUCCESSFULLY");
+        });
+    </script>
+    
+</body>
+</html>
